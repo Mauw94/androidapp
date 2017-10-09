@@ -1,0 +1,25 @@
+
+
+
+
+																DATABASE informatie mobile development
+
+
+				Sterrenstelels: naam, diameter, afbeelding, aantal sterren, 
+				Sterren: Sterrenbeeld, lichtkracht, temperatuur, afstand, straal, afbeelding
+				Planeten (ons zonnestelsel): omtrek, diameter, massa, dichtheid, rotatiesnelheid, temperatuur, afstand, afbeelding
+				UserInfo: gebruikersnaam, wachtwoord
+				
+				
+				
+				
+				
+				
+																FUNCTIONALITEIT
+				
+				Login met eigen account. Kan ook een eigen account aanmaken.
+				Overzicht van Sterrenstelsels, sterren, planeten.
+				Kan een item als favoriet toevoegen.
+				Kan een item toevoegen.
+				FB share
+				api gebruiken

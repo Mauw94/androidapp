@@ -1,9 +1,13 @@
-package com.example.maurits.universo;
+package com.example.maurits.universo.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.maurits.universo.fragment.GalaxyFragment;
+import com.example.maurits.universo.fragment.PlanetFragment;
+import com.example.maurits.universo.fragment.StarFragment;
 
 /**
  * Created by Maurits on 3-10-2017.
