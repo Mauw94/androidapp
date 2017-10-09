@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/planet"
+    tools:context=".activity.DetailsStarActivity">
+
+    <TextView
+        android:id="@+id/planet_diameter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignEnd="@+id/edit_body"
+        android:layout_alignRight="@+id/edit_body"
+        android:background="@color/colorPrimary"
+        android:text="Luminosity: "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/planet_rotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Luminosity: "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/planet_diameter"
+        android:layout_alignStart="@+id/planet_diameter" />
+
+    <TextView
+        android:id="@+id/planet_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toEndOf="@+id/planet_mass"
+        android:layout_toRightOf="@+id/planet_mass"
+        android:background="@color/colorPrimary"
+        android:text="rota: "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/planet_mass"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:background="@color/colorPrimary"
+        android:text="Distance to star"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/planet_name"
+        android:layout_marginTop="86dp"
+        android:background="@color/colorPrimary"
+        android:text="Mass: "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:background="@color/colorPrimary"
+        android:text="Temperature"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Rotation speed"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorPrimary"
+        android:text="Diameter"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/planet_mass"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:background="@color/colorPrimary"
+        android:text="Distance to star"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/edit_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        app:srcCompat="@drawable/edit" />
+
+    <TextView
+        android:id="@+id/planet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:background="@color/colorPrimary"
+        android:text=" Name "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="36sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/planet_mass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Mass: "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignLeft="@+id/planet_distance"
+        android:layout_alignStart="@+id/planet_distance" />
+
+    <TextView
+        android:id="@+id/planet_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Luminosity: "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/planet_diameter"
+        android:layout_alignStart="@+id/planet_diameter" />
+
+</RelativeLayout>

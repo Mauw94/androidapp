@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#dbdbdb</color>
-    <color name="colorAccent">#dbdbdb</color>
-    <color name="main_menu">#ffffff</color>
+    <color name="colorPrimary">#dbdbdb</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="main_menu">#000000</color>
 
-    <color name="planet">#65f441</color>
-    <color name="star">#f2e310</color>
-    <color name="galaxy">#c141f4</color>
+    <color name="planet">#007a49</color>
+    <color name="star">#c69500</color>
+    <color name="galaxy">#6e0093</color>
 </resources>

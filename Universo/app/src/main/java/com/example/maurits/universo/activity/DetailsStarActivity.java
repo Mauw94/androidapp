@@ -4,21 +4,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.maurits.universo.R;
+import com.example.maurits.universo.data.CelestialBodyDbhelper;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailsStarActivity extends AppCompatActivity {
+
+    private CelestialBodyDbhelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_detail_star);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_body);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +27,17 @@ public class DetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mDbHelper = new CelestialBodyDbhelper(this);
+
+        //testShowPlanet();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String text = extras.getString("Star");
+            TextView textView = (TextView) findViewById(R.id.planet_name);
+            textView.setText(text);
+        }
+
     }
 
 }

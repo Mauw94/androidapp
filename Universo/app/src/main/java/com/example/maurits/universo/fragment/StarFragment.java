@@ -1,12 +1,16 @@
 package com.example.maurits.universo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.maurits.universo.activity.DetailsStarActivity;
+import com.example.maurits.universo.activity.MainActivity;
 import com.example.maurits.universo.adapter.StarAdapter;
 import com.example.maurits.universo.R;
 import com.example.maurits.universo.model.Star;
@@ -27,15 +31,25 @@ public class StarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.object,container,false);
-        ArrayList<Star> stars = new ArrayList();
-        stars.add(new Star("Sun", R.drawable.noimage));
-        stars.add(new Star("Test", R.drawable.earth));
+
+        MainActivity activity = (MainActivity) getActivity();
+        final ArrayList<Star> stars = activity.getStarsList();
 
         StarAdapter adapter = new StarAdapter(getActivity(), stars, R.color.star);
 
-        ListView listView = (ListView) rootView.findViewById(R.id.object_list);
+        ListView listView = rootView.findViewById(R.id.object_list);
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Star star = stars.get(position);
+                Intent detailsIntent = new Intent(getActivity(), DetailsStarActivity.class);
+                detailsIntent.putExtra("Star", star.getmName());
+                startActivity(detailsIntent);
+            }
+        });
 
         return rootView;
     }

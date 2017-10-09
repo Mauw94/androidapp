@@ -1,25 +1,22 @@
 package com.example.maurits.universo.model;
 
-/**
- * Created by Maurits on 3-10-2017.
- */
+import com.example.maurits.universo.data.ObjectImage;
 
 public class Planet {
+    private int mId;
     private String mName;
-    private int mResourceId = NO_IMAGE_PROVIDED;
-    private float mDiameter;
-    private float mPerimeter;
-    private float mMass;
-    private float mRotationSpeed;
-    private float mTemperature;
-    private float mDistance;
-    private final static int NO_IMAGE_PROVIDED = -1;
+    private int mResourceId = ObjectImage.NO_IMAGE_PROVIDED;
+    private String mDiameter;
+    private String mMass;
+    private String mRotationSpeed;
+    private String mTemperature;
+    private String mDistance;
 
-    public Planet(String mName, int mResourceId, float mDiameter, float mPerimeter, float mMass, float mRotationSpeed, float mTemperature, float mDistance) {
+    public Planet(int id, String mName, int mResourceId, String mDiameter, String mMass, String mRotationSpeed, String mTemperature, String mDistance) {
+        this.mId = id;
         this.mName = mName;
         this.mResourceId = mResourceId;
         this.mDiameter = mDiameter;
-        this.mPerimeter = mPerimeter;
         this.mMass = mMass;
         this.mRotationSpeed = mRotationSpeed;
         this.mTemperature = mTemperature;
@@ -31,6 +28,8 @@ public class Planet {
         this.mResourceId = mResourceId;
     }
 
+    public int getId() { return mId; }
+
     public String getmName() {
         return mName;
     }
@@ -39,32 +38,60 @@ public class Planet {
         return mResourceId;
     }
 
-    public float getmDiameter() {
+    public String getmDiameter() {
         return mDiameter;
     }
 
-    public float getmPerimeter() {
-        return mPerimeter;
-    }
-
-    public float getmMass() {
+    public String getmMass() {
         return mMass;
     }
 
-    public float getmRotationSpeed() {
+    public String getmRotationSpeed() {
         return mRotationSpeed;
     }
 
-    public float getmTemperature() {
+    public String getmTemperature() {
         return mTemperature;
     }
 
-    public float getmDistance() {
+    public String getmDistance() {
         return mDistance;
     }
 
     public boolean hasImage()
     {
-        return mResourceId != NO_IMAGE_PROVIDED;
+        return mResourceId != ObjectImage.NO_IMAGE_PROVIDED;
+    }
+
+    public void setmId(int mId) {
+        this.mId = mId;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
+
+    public void setmResourceId(int mResourceId) {
+        this.mResourceId = mResourceId;
+    }
+
+    public void setmDiameter(String mDiameter) {
+        this.mDiameter = mDiameter;
+    }
+
+    public void setmMass(String mMass) {
+        this.mMass = mMass;
+    }
+
+    public void setmRotationSpeed(String mRotationSpeed) {
+        this.mRotationSpeed = mRotationSpeed;
+    }
+
+    public void setmTemperature(String mTemperature) {
+        this.mTemperature = mTemperature;
+    }
+
+    public void setmDistance(String mDistance) {
+        this.mDistance = mDistance;
     }
 }

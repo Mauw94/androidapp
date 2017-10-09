@@ -40,7 +40,7 @@ public class PlanetAdapter extends ArrayAdapter<Planet> {
 
         Planet planet = getItem(position);
 
-        TextView bodyName = listView.findViewById(R.id.body_name);
+        TextView bodyName = listView.findViewById(R.id.planet_name);
         bodyName.setText(planet.getmName());
 
         ImageView imageView = listView.findViewById(R.id.image);

@@ -27,13 +27,13 @@
         android:paddingLeft="16dp">
 
         <TextView
-            android:id="@+id/body_name"
+            android:id="@+id/planet_name"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:gravity="top"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             tools:text="one"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"

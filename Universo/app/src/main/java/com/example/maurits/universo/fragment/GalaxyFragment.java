@@ -1,8 +1,6 @@
 package com.example.maurits.universo.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.maurits.universo.R;
-import com.example.maurits.universo.activity.DetailActivity;
+import com.example.maurits.universo.activity.DetailsStarActivity;
 import com.example.maurits.universo.adapter.GalaxyAdapter;
 import com.example.maurits.universo.model.Galaxy;
 
@@ -54,7 +52,7 @@ public class GalaxyFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent editIntent = new Intent(getActivity(), DetailActivity.class);
+                Intent editIntent = new Intent(getActivity(), DetailsStarActivity.class);
                 startActivity(editIntent);
             }
         });

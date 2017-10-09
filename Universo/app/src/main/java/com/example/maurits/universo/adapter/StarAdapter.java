@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.maurits.universo.R;
-import com.example.maurits.universo.model.Planet;
 import com.example.maurits.universo.model.Star;
 
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class StarAdapter extends ArrayAdapter<Star> {
 
         Star star = getItem(position);
 
-        TextView bodyName = listView.findViewById(R.id.body_name);
+        TextView bodyName = listView.findViewById(R.id.planet_name);
         bodyName.setText(star.getmName());
 
         ImageView imageView = listView.findViewById(R.id.image);
