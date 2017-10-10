@@ -1,0 +1,4 @@
+
+
+signed in = double click back creates database again?
+need sign out button, disconnect button

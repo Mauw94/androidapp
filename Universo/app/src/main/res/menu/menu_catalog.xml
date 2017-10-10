@@ -5,7 +5,9 @@
     tools:context=".activity.DetailsStarActivity">
 
     <item
-        android:id="@+id/action_insert_dummy_data"
-        android:title="Insert Dummy Data"
-        app:showAsAction="never" />
+        android:id="@+id/action_back_to_start"
+        android:title="Back2Start"
+        android:icon="@drawable/universe"
+        app:showAsAction="never"
+        />
 </menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.maurits.universo.activity.StartUpActivity"
+    android:weightSum="1">
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="233dp"
+        android:background="@drawable/universe" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+        android:textColor="@color/colorPrimary"
+        android:textSize="130sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="213dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="80dp"
+        android:layout_weight="0.06"
+        android:background="@color/galaxy"
+        android:text="Start APp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+</LinearLayout>

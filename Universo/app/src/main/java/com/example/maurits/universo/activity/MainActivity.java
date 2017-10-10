@@ -1,14 +1,23 @@
 package com.example.maurits.universo.activity;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.InflateException;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.maurits.universo.R;
 import com.example.maurits.universo.adapter.CategoryAdapter;
@@ -19,6 +28,7 @@ import com.example.maurits.universo.model.Star;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,16 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-//        populateEarthEntry();
-//        populateMarsEntry();
-//        populateJupiterEntry();
-//        populateMercuryEntry();
-//        populateSaturnEntry();
-//        populateVenusEntry();
-//        populateSunEntry();
-//        populateBetelgeuseEntry();
-//        populateSDoradusEntry();
-//        populateUyscutiEntry();
+        populateEarthEntry();
+        populateMarsEntry();
+        populateJupiterEntry();
+        populateMercuryEntry();
+        populateSaturnEntry();
+        populateVenusEntry();
+        populateSunEntry();
+        populateBetelgeuseEntry();
+        populateSDoradusEntry();
+        populateUyscutiEntry();
 
         getAllPlanets();
         getAllStars();
@@ -64,6 +74,19 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_catalog, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_back_to_start:
+                Intent startIntent = new Intent(MainActivity.this, StartUpActivity.class);
+                startActivity(startIntent);
+            default :
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private void getAllPlanets(){
 

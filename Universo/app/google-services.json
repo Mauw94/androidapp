@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "47391880214",
+    "project_id": "universo-9a05c"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47391880214:android:310b6439715de04a",
+        "android_client_info": {
+          "package_name": "com.example.maurits.universo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47391880214-uhbejjfujtmrnmi84s2vf9dis9jj1vrd.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "47391880214-3l1kf3ih3tu6hghrdt7n9q8ot88ub7uv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.maurits.universo",
+            "certificate_hash": "db3b841e130f084f585fbc9eb7d71638ce56e217"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIEm8oqzyHRycihgppL543MyQeYir4g3Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

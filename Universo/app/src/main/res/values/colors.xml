@@ -6,7 +6,12 @@
     <color name="colorAccent">#ffffff</color>
     <color name="main_menu">#000000</color>
 
-    <color name="planet">#007a49</color>
+    <color name="planet">#2f8a65</color>
     <color name="star">#c69500</color>
-    <color name="galaxy">#6e0093</color>
+    <color name="galaxy">#403259</color>
+    <color name="blue_grey_500">#607D8B</color>
+    <color name="blue_grey_600">#546E7A</color>
+    <color name="blue_grey_700">#455A64</color>
+    <color name="blue_grey_800">#37474F</color>
+    <color name="blue_grey_900">#263238</color>
 </resources>
