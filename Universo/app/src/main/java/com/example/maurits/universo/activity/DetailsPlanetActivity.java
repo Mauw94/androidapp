@@ -43,7 +43,7 @@ public class DetailsPlanetActivity extends AppCompatActivity {
 
             TextView nameView = (TextView) findViewById(R.id.planet_name);
             TextView massView = (TextView) findViewById(R.id.planet_mass);
-            TextView tempView = (TextView) findViewById(R.id.planet_temp);
+            TextView tempView = (TextView) findViewById(R.id.planet_temperature);
             TextView distanceView = (TextView) findViewById(R.id.planet_distance);
             TextView diameterView = (TextView) findViewById(R.id.planet_diameter);
             TextView rotaSpeedView = (TextView) findViewById(R.id.planet_rotation);

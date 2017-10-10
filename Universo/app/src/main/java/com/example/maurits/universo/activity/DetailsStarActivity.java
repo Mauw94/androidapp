@@ -33,9 +33,26 @@ public class DetailsStarActivity extends AppCompatActivity {
         //testShowPlanet();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String text = extras.getString("Star");
-            TextView textView = (TextView) findViewById(R.id.planet_name);
-            textView.setText(text);
+            String name = extras.getString("name");
+            String mass = extras.getString("mass");
+            String temp = extras.getString("temp");
+            String age = extras.getString("age");
+            String diameter = extras.getString("diameter");
+            String luminosity = extras.getString("luminosity");
+
+            TextView nameView = (TextView) findViewById(R.id.star_name);
+            TextView massView = (TextView) findViewById(R.id.star_mass);
+            TextView tempView = (TextView) findViewById(R.id.star_temperature);
+            TextView ageView = (TextView) findViewById(R.id.star_age);
+            TextView luminosityView = (TextView) findViewById(R.id.star_luminosity);
+            TextView diameterView = (TextView) findViewById(R.id.star_diameter);
+
+            nameView.setText(name);
+            massView.setText(mass + "");
+            tempView.setText(temp + "");
+            ageView.setText(age+"");
+            diameterView.setText(diameter+"");
+            luminosityView.setText(luminosity+"");
         }
 
     }

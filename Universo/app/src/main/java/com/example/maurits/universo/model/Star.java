@@ -9,13 +9,13 @@ public class Star {
     private final static int NO_IMAGE_PROVIDED = -1;
     private int mResourceId = NO_IMAGE_PROVIDED;
     private String mName;
-    private float mTemperature;
-    private float mDiameter;
-    private float mLuminosity;
-    private int mAge;
-    private float mMass;
+    private String mTemperature;
+    private String mDiameter;
+    private String mLuminosity;
+    private String mAge;
+    private String mMass;
 
-    public Star(int mResourceId, String mName, float mTemperature, float mDiameter, float mLuminosity, int mAge, float mMass) {
+    public Star(int mResourceId, String mName, String mTemperature, String mDiameter, String mLuminosity, String mAge, String mMass) {
         this.mResourceId = mResourceId;
         this.mName = mName;
         this.mTemperature = mTemperature;
@@ -46,43 +46,43 @@ public class Star {
         this.mName = mName;
     }
 
-    public float getmTemperature() {
+    public String getmTemperature() {
         return mTemperature;
     }
 
-    public void setmTemperature(float mTemperature) {
+    public void setmTemperature(String mTemperature) {
         this.mTemperature = mTemperature;
     }
 
-    public float getmDiameter() {
+    public String getmDiameter() {
         return mDiameter;
     }
 
-    public void setmDiameter(float mDiameter) {
+    public void setmDiameter(String mDiameter) {
         this.mDiameter = mDiameter;
     }
 
-    public float getmLuminosity() {
+    public String getmLuminosity() {
         return mLuminosity;
     }
 
-    public void setmLuminosity(float mLuminosity) {
+    public void setmLuminosity(String mLuminosity) {
         this.mLuminosity = mLuminosity;
     }
 
-    public int getmAge() {
+    public String getmAge() {
         return mAge;
     }
 
-    public void setmAge(int mAge) {
+    public void setmAge(String mAge) {
         this.mAge = mAge;
     }
 
-    public float getmMass() {
+    public String getmMass() {
         return mMass;
     }
 
-    public void setmMass(float mMass) {
+    public void setmMass(String mMass) {
         this.mMass = mMass;
     }
 

@@ -9,7 +9,7 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "celestialbody.db";
 
-    private static final int DATABASE_VERSION = 15;
+    private static final int DATABASE_VERSION = 19;
 
     public CelestialBodyDbhelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,12 +29,12 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_PLANET_TABLE);
 
         String SQL_CREATE_STAR_TABLE = "CREATE TABLE " + CelestialBodyContract.StarEntry.TABLE_NAME + "("
-                + CelestialBodyContract.StarEntry.COLUMN_STAR_AGE + " FLOAT NOT NULL, "
-                + CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER + " FLOAT NOT NULL, "
-                + CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY + " FLOAT NOT NULL, "
-                + CelestialBodyContract.StarEntry.COLUMN_STAR_MASS + " FLOAT NOT NULL, "
+                + CelestialBodyContract.StarEntry.COLUMN_STAR_AGE + " TEXT NOT NULL, "
+                + CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER + " TEXT NOT NULL, "
+                + CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY + " TEXT NOT NULL, "
+                + CelestialBodyContract.StarEntry.COLUMN_STAR_MASS + " TEXT NOT NULL, "
                 + CelestialBodyContract.StarEntry.COLUMN_STAR_NAME + " TEXT NOT NULL, "
-                + CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE + " FLOAT NOT NULL, "
+                + CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE + " TEXT NOT NULL, "
                 + CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID + " INTEGER NOT NULL);";
         db.execSQL(SQL_CREATE_STAR_TABLE);
     }

@@ -42,16 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        populateEarthEntry();
-        populateMarsEntry();
-        populateJupiterEntry();
-        populateMercuryEntry();
-        populateSaturnEntry();
-        populateVenusEntry();
-        populateSunEntry();
-        populateBetelgeuseEntry();
-        populateSDoradusEntry();
-        populateUyscutiEntry();
+//        populateEarthEntry();
+//        populateMarsEntry();
+//        populateJupiterEntry();
+//        populateMercuryEntry();
+//        populateSaturnEntry();
+//        populateVenusEntry();
+//        populateSunEntry();
+//        populateBetelgeuseEntry();
+//        populateSDoradusEntry();
+//        populateUyscutiEntry();
 
         getAllPlanets();
         getAllStars();
@@ -138,12 +138,21 @@ public class MainActivity extends AppCompatActivity {
         try {
             int imageIdColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID);
             int nameColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME);
+            int massColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS);
+            int tempColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE);
+            int ageColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE);
+            int diameterColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER);
+            int luminosityColumn = cursor.getColumnIndex(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY);
 
             while (cursor.moveToNext()) {
                 int imageId = cursor.getInt(imageIdColumn);
                 String name = cursor.getString(nameColumn);
-
-                stars.add(new Star(name, imageId));
+                String mass = cursor.getString(massColumn);
+                String temp = cursor.getString(tempColumn);
+                String age = cursor.getString(ageColumn);
+                String diameter = cursor.getString(diameterColumn);
+                String lumi = cursor.getString(luminosityColumn);
+                stars.add(new Star(imageId, name, temp, diameter, lumi, age, mass));
             }
         }finally {
             cursor.close();
@@ -268,11 +277,11 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
 
         values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "The Sun");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, 8000000000f);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, 4546456);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, 4546);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, 45645646);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, 456464456f);
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "8B");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "454664km");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "11212");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "121313milj TON");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "5k kelvin");
         values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.sun);
 
         db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
@@ -284,11 +293,11 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
 
         values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "Betelgeuse");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, 8000000000f);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, 4546456);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, 4546);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, 45645646);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, 456464456f);
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "4B");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "4123km");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "11212");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "113milj TON");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "3k kelvin");
         values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.betelgeuse);
 
         db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
@@ -300,11 +309,11 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
 
         values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "UY Scuti");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, 8000000000f);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, 4546456);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, 4546);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, 45645646);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, 456464456f);
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "3B");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "8878km");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "125");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "7853milj TON");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "2k kelvin");
         values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.uyscuti);
 
         db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
@@ -316,11 +325,11 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
 
         values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "SDoradus");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, 8000000000f);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, 4546456);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, 4546);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, 45645646);
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, 456464456f);
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "6B");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "1212km");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "568");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "185milj TON");
+        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "5k kelvin");
         values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.sdoradus);
 
         db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);

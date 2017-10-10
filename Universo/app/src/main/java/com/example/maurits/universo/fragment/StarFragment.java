@@ -46,7 +46,12 @@ public class StarFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Star star = stars.get(position);
                 Intent detailsIntent = new Intent(getActivity(), DetailsStarActivity.class);
-                detailsIntent.putExtra("Star", star.getmName());
+                detailsIntent.putExtra("name", star.getmName());
+                detailsIntent.putExtra("mass", star.getmMass());
+                detailsIntent.putExtra("temp", star.getmTemperature());
+                detailsIntent.putExtra("diameter", star.getmDiameter());
+                detailsIntent.putExtra("age", star.getmAge());
+                detailsIntent.putExtra("luminosity", star.getmLuminosity());
                 startActivity(detailsIntent);
             }
         });
