@@ -40,7 +40,7 @@ public class GalaxyAdapter extends ArrayAdapter<Galaxy> {
 
         Galaxy galaxy = getItem(position);
 
-        TextView bodyName = listView.findViewById(R.id.planet_name);
+        TextView bodyName = listView.findViewById(R.id.edit_name);
         bodyName.setText(galaxy.getmName());
 
         ImageView imageView = listView.findViewById(R.id.image);

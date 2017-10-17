@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/edit" />
 
     <TextView
-        android:id="@+id/planet_name"
+        android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/planet_name"
+        android:layout_below="@+id/edit_name"
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
         android:layout_marginTop="99dp"
@@ -103,7 +103,7 @@
         tools:text="Distance from star: " />
 
     <TextView
-        android:id="@+id/planet_mass"
+        android:id="@+id/edit_mass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
@@ -116,7 +116,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/planet_diameter"
+        android:id="@+id/edit_diameter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -149,7 +149,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/planet_distance"
+        android:id="@+id/edit_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView7"

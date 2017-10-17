@@ -40,7 +40,7 @@ public class StarAdapter extends ArrayAdapter<Star> {
 
         Star star = getItem(position);
 
-        TextView bodyName = listView.findViewById(R.id.planet_name);
+        TextView bodyName = listView.findViewById(R.id.edit_name);
         bodyName.setText(star.getmName());
 
         ImageView imageView = listView.findViewById(R.id.image);
