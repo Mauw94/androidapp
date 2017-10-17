@@ -15,7 +15,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
 public class StartUpActivity extends AppCompatActivity {
-    
+
     UserSessionManager session;
 
     @Override
@@ -26,8 +26,6 @@ public class StartUpActivity extends AppCompatActivity {
         session =  new UserSessionManager(getApplicationContext());
 
         Button startButton = (Button) findViewById(R.id.button_start);
-
-        Toast.makeText(getApplicationContext(), "Signed in.", Toast.LENGTH_SHORT).show();
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +61,7 @@ public class StartUpActivity extends AppCompatActivity {
         Auth.GoogleSignInApi.signOut(session.mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
             public void onResult(@NonNull Status status) {
-                Toast.makeText(getApplicationContext(), "Signed out.", Toast.LENGTH_SHORT).show();
+
                 session.mGoogleApiClient.disconnect();
             }
         });

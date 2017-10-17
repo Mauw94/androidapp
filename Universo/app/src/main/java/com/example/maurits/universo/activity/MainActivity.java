@@ -1,23 +1,16 @@
 package com.example.maurits.universo.activity;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.InflateException;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.example.maurits.universo.R;
 import com.example.maurits.universo.adapter.CategoryAdapter;
@@ -28,8 +21,6 @@ import com.example.maurits.universo.model.Planet;
 import com.example.maurits.universo.model.Star;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        getDbDate();
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         CategoryAdapter adapter = new CategoryAdapter(this, getSupportFragmentManager());
@@ -54,15 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        populatePlanetEntries();
-        populateStarEntries();
-        populateGalaxyEntries();
-
-        getAllPlanets();
-        getAllStars();
-        getAllGalaxies();
-
-        Log.v("MainActivity", "galaxies count " + galaxies.size());
     }
 
     @Override
@@ -83,9 +67,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void getDbDate(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getAllGalaxies();
+                getAllPlanets();
+                getAllStars();
+            }
+        };
+        new Thread(runnable).start();
+    }
 
     private void getAllPlanets(){
-
         mDbHelper = new CelestialBodyDbhelper(this);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
@@ -215,232 +209,6 @@ public class MainActivity extends AppCompatActivity {
         }finally {
             cursor.close();
         }
-    }
-
-    private void populateEarthEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // earth
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Earth");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.earth);
-
-        long newRowId = db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-
-        Log.v("MainActivity", "newRowId " + newRowId);
-    }
-
-    private void populateMarsEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // mars
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Mars");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.mars);
-
-        long newRowId = db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-
-        Log.v("MainActivity", "newRowId " + newRowId);
-    }
-
-    private void populateJupiterEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // jupiter
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Jupiter");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.jupiter);
-
-        long newRowId = db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-
-        Log.v("MainActivity", "newRowId " + newRowId);
-    }
-
-    private void populateSaturnEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // jupiter
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Saturn");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.saturn);
-
-        long newRowId = db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-
-        Log.v("MainActivity", "newRowId " + newRowId);
-    }
-
-    private void populateVenusEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // jupiter
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Venus");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.venus);
-
-        long newRowId = db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-
-        Log.v("MainActivity", "newRowId " + newRowId);
-    }
-
-    private void populateMercuryEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        // jupiter
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME, "Mercury");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DIAMETER, "40k km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_DISTANCEFROMSTAR, "150milj km");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS, "5000m ton");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED, "150km/u");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_PLANET_TEMPERATURE, "30g");
-        values.put(CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID, R.drawable.mercury);
-
-        db.insert(CelestialBodyContract.PlanetEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateSunEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "The Sun");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "8B");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "454664km");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "11212");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "121313milj TON");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "5k kelvin");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.sun);
-
-        db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateBetelgeuseEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "Betelgeuse");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "4B");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "4123km");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "11212");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "113milj TON");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "3k kelvin");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.betelgeuse);
-
-        db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateUyscutiEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "UY Scuti");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "3B");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "8878km");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "125");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "7853milj TON");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "2k kelvin");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.uyscuti);
-
-        db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateSDoradusEntry() {
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_NAME, "SDoradus");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_AGE, "6B");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_DIAMETER, "1212km");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_LUMINOSITY, "568");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_MASS, "185milj TON");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE, "5k kelvin");
-        values.put(CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID, R.drawable.sdoradus);
-
-        db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateMilkyWayEntry(){
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE, "10B");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS, "105M");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME, "Milky Way");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE, "546B");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID, R.drawable.milkyway);
-
-        db.insert(CelestialBodyContract.GalaxyEntry.TABLE_NAME, null, values);
-    }
-
-    private void populateAndromedaEntry(){
-        mDbHelper = new CelestialBodyDbhelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE, "12B");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS, "500M");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME, "Andromeda");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE, "546B");
-        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID, R.drawable.andromeda);
-
-        db.insert(CelestialBodyContract.GalaxyEntry.TABLE_NAME, null, values);
-    }
-
-
-    private void populatePlanetEntries() {
-        populateEarthEntry();
-        populateMarsEntry();
-        populateJupiterEntry();
-        populateMercuryEntry();
-        populateSaturnEntry();
-        populateVenusEntry();
-    }
-
-    private void populateStarEntries(){
-        populateSunEntry();
-        populateBetelgeuseEntry();
-        populateSDoradusEntry();
-        populateUyscutiEntry();
-    }
-
-    private void populateGalaxyEntries(){
-        populateMilkyWayEntry();
-        populateAndromedaEntry();
     }
 
     public ArrayList<Planet> getPlanetsList()

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maurits.universo.R;
 import com.example.maurits.universo.data.CelestialBodyDbhelper;
@@ -33,6 +34,7 @@ public class DetailsGalaxyActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             String name = extras.getString("name");
+            Toast.makeText(getApplicationContext(), "Details of: " + name, Toast.LENGTH_SHORT).show();
             String mass = extras.getString("mass");
             String size = extras.getString("size");
             String age = extras.getString("age");

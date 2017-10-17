@@ -31,7 +31,7 @@ public class DetailsStarActivity extends AppCompatActivity {
         if (extras != null) {
             String name = extras.getString("name");
 
-
+            Toast.makeText(getApplicationContext(), "Details of: " + name, Toast.LENGTH_SHORT).show();
             String mass = extras.getString("mass");
             String temp = extras.getString("temp");
             String age = extras.getString("age");

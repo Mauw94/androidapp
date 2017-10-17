@@ -3,10 +3,12 @@ package com.example.maurits.universo.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.maurits.universo.model.UserSessionManager;
 import com.google.android.gms.auth.api.Auth;
@@ -81,6 +83,11 @@ public class SignInActivity extends AppCompatActivity implements
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        Toast.makeText(getApplicationContext(), "Login to continue.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -186,11 +193,21 @@ public class SignInActivity extends AppCompatActivity implements
     private  void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-            Intent startIntent = new Intent(SignInActivity.this, StartUpActivity.class);
-            startActivity(startIntent);
+            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+            TextView detail = (TextView) findViewById(R.id.detail);
+            detail.setVisibility(View.VISIBLE);
+            detail.setText(R.string.loading);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent startIntent = new Intent(SignInActivity.this, StartUpActivity.class);
+                    startActivity(startIntent);
+                }
+            }, 2500);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
+            findViewById(R.id.detail).setVisibility(View.GONE);
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
