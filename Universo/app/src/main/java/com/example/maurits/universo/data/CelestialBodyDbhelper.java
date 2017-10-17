@@ -9,7 +9,7 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "celestialbody.db";
 
-    private static final int DATABASE_VERSION = 28;
+    private static final int DATABASE_VERSION = 30;
 
     public CelestialBodyDbhelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,7 +25,7 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
                 + CelestialBodyContract.PlanetEntry.COLUMN_PLANET_NAME +  " TEXT NOT NULL, "
                 + CelestialBodyContract.PlanetEntry.COLUMN_PLANET_ROTASPEED + " TEXT NOT NULL, "
                 + CelestialBodyContract.PlanetEntry.COLUMN_PLANET_MASS + " TEXT NOT NULL, "
-                + CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID + " TEXT NOT NULL);";
+                + CelestialBodyContract.PlanetEntry.COLUMN_IMAGE_ID + " INTEGER NOT NULL);";
         db.execSQL(SQL_CREATE_PLANET_TABLE);
 
         String SQL_CREATE_STAR_TABLE = "CREATE TABLE " + CelestialBodyContract.StarEntry.TABLE_NAME + "("
@@ -37,12 +37,22 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
                 + CelestialBodyContract.StarEntry.COLUMN_STAR_TEMPERATURE + " TEXT NOT NULL, "
                 + CelestialBodyContract.StarEntry.COLUMN_IMAGE_ID + " INTEGER NOT NULL);";
         db.execSQL(SQL_CREATE_STAR_TABLE);
+
+        String SQL_CREATE_GALAXY_TABLE = "CREATE TABLE " + CelestialBodyContract.GalaxyEntry.TABLE_NAME + "("
+                + CelestialBodyContract.GalaxyEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME + " TEXT NOT NULL, "
+                + CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE + " TEXT NOT NULL, "
+                + CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS + " TEXT NOT NULL, "
+                + CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE + " TEXT NOT NULL, "
+                + CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID+ " INTEGER NOT NULL);";
+        db.execSQL(SQL_CREATE_GALAXY_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + CelestialBodyContract.PlanetEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + CelestialBodyContract.StarEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CelestialBodyContract.GalaxyEntry.TABLE_NAME);
         onCreate(db);
     }
 }

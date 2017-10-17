@@ -23,6 +23,7 @@ import com.example.maurits.universo.R;
 import com.example.maurits.universo.adapter.CategoryAdapter;
 import com.example.maurits.universo.data.CelestialBodyContract;
 import com.example.maurits.universo.data.CelestialBodyDbhelper;
+import com.example.maurits.universo.model.Galaxy;
 import com.example.maurits.universo.model.Planet;
 import com.example.maurits.universo.model.Star;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Planet> planets = new ArrayList<>();
     private final ArrayList<Star> stars = new ArrayList<>();
+    private final ArrayList<Galaxy> galaxies = new ArrayList<>();
     private CelestialBodyDbhelper mDbHelper;
 
     @Override
@@ -52,21 +54,15 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        populateEarthEntry();
-        populateMarsEntry();
-        populateJupiterEntry();
-        populateMercuryEntry();
-        populateSaturnEntry();
-        populateVenusEntry();
-        populateSunEntry();
-        populateBetelgeuseEntry();
-        populateSDoradusEntry();
-        populateUyscutiEntry();
+        populatePlanetEntries();
+        populateStarEntries();
+        populateGalaxyEntries();
 
         getAllPlanets();
         getAllStars();
+        getAllGalaxies();
 
-        Log.v("MainActivity", "stars count " + stars.size());
+        Log.v("MainActivity", "galaxies count " + galaxies.size());
     }
 
     @Override
@@ -176,6 +172,45 @@ public class MainActivity extends AppCompatActivity {
                 String diameter = cursor.getString(diameterColumn);
                 String lumi = cursor.getString(luminosityColumn);
                 stars.add(new Star(imageId, name, temp, diameter, lumi, age, mass));
+            }
+        }finally {
+            cursor.close();
+        }
+    }
+
+    private void getAllGalaxies() {
+        mDbHelper = new CelestialBodyDbhelper(this);
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+        String[] projection = {
+                CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID,
+                CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE,
+                CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE,
+                CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS,
+                CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME
+        };
+
+        Cursor cursor = db.query(
+                CelestialBodyContract.GalaxyEntry.TABLE_NAME,
+                projection,
+                null, null, null, null, null
+        );
+
+        try {
+            int imageIdColumn = cursor.getColumnIndex(CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID);
+            int nameColumn = cursor.getColumnIndex(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME);
+            int sizeColumn = cursor.getColumnIndex(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE);
+            int ageColumn = cursor.getColumnIndex(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE);
+            int massColumn = cursor.getColumnIndex(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS);
+
+
+            while (cursor.moveToNext()) {
+                int imageId = cursor.getInt(imageIdColumn);
+                String name = cursor.getString(nameColumn);
+                String size = cursor.getString(sizeColumn);
+                String age = cursor.getString(ageColumn);
+                String mass = cursor.getString(massColumn);
+                galaxies.add(new Galaxy(name, imageId, size, age, mass));
             }
         }finally {
             cursor.close();
@@ -358,6 +393,56 @@ public class MainActivity extends AppCompatActivity {
         db.insert(CelestialBodyContract.StarEntry.TABLE_NAME, null, values);
     }
 
+    private void populateMilkyWayEntry(){
+        mDbHelper = new CelestialBodyDbhelper(this);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE, "10B");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS, "105M");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME, "Milky Way");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE, "546B");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID, R.drawable.milkyway);
+
+        db.insert(CelestialBodyContract.GalaxyEntry.TABLE_NAME, null, values);
+    }
+
+    private void populateAndromedaEntry(){
+        mDbHelper = new CelestialBodyDbhelper(this);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_AGE, "12B");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_MASS, "500M");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_NAME, "Andromeda");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_GAL_SIZE, "546B");
+        values.put(CelestialBodyContract.GalaxyEntry.COLUMN_IMAGE_ID, R.drawable.andromeda);
+
+        db.insert(CelestialBodyContract.GalaxyEntry.TABLE_NAME, null, values);
+    }
+
+
+    private void populatePlanetEntries() {
+        populateEarthEntry();
+        populateMarsEntry();
+        populateJupiterEntry();
+        populateMercuryEntry();
+        populateSaturnEntry();
+        populateVenusEntry();
+    }
+
+    private void populateStarEntries(){
+        populateSunEntry();
+        populateBetelgeuseEntry();
+        populateSDoradusEntry();
+        populateUyscutiEntry();
+    }
+
+    private void populateGalaxyEntries(){
+        populateMilkyWayEntry();
+        populateAndromedaEntry();
+    }
+
     public ArrayList<Planet> getPlanetsList()
     {
         return planets;
@@ -367,4 +452,5 @@ public class MainActivity extends AppCompatActivity {
         return stars;
     }
 
+    public ArrayList<Galaxy> getGalaxyList() {return galaxies;}
 }

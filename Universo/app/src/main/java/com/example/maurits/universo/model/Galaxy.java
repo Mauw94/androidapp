@@ -8,19 +8,16 @@ public class Galaxy {
     private String mName;
     private static final int NO_IMAGE_PROVIDED = -1;
     private int mResourceId;
-    private float mDiameter;
-    private int mAmountOfStars;
+    private String mSize;
+    private String mAge;
+    private String mMass;
 
-    public Galaxy(String mName, int mResourceId, float mDiameter, int mAmountOfStars) {
+    public Galaxy(String mName, int mResourceId, String mSize, String mAge, String mMass) {
         this.mName = mName;
         this.mResourceId = mResourceId;
-        this.mDiameter = mDiameter;
-        this.mAmountOfStars = mAmountOfStars;
-    }
-
-    public Galaxy(String name, int mResourceId) {
-        this.mName = name;
-        this.mResourceId = mResourceId;
+        this.mSize = mSize;
+        this.mAge = mAge;
+        this.mMass = mMass;
     }
 
     public String getmName() {
@@ -39,23 +36,31 @@ public class Galaxy {
         this.mResourceId = mResourceId;
     }
 
-    public float getmDiameter() {
-        return mDiameter;
+    public String getmSize() {
+        return mSize;
     }
 
-    public void setmDiameter(float mDiameter) {
-        this.mDiameter = mDiameter;
+    public void setmSize(String mSize) {
+        this.mSize = mSize;
     }
 
-    public int getmAmountOfStars() {
-        return mAmountOfStars;
+    public String getmAge() {
+        return mAge;
     }
 
-    public void setmAmountOfStars(int mAmountOfStars) {
-        this.mAmountOfStars = mAmountOfStars;
+    public void setmAge(String mAge) {
+        this.mAge = mAge;
     }
 
-    public boolean hasImage() {
-        return mResourceId != NO_IMAGE_PROVIDED;
+    public String getmMass() {
+        return mMass;
+    }
+
+    public void setmMass(String mMass) {
+        this.mMass = mMass;
+    }
+
+    public boolean hasImage(){
+        return NO_IMAGE_PROVIDED != mResourceId;
     }
 }

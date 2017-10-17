@@ -1,22 +1,23 @@
 package com.example.maurits.universo.activity;
 
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.maurits.universo.R;
 import com.example.maurits.universo.data.CelestialBodyDbhelper;
 
-public class DetailsStarActivity extends AppCompatActivity {
+public class DetailsGalaxyActivity extends AppCompatActivity {
+
+    private CelestialBodyDbhelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_star);
+        setContentView(R.layout.activity_details_galaxy);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_body);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -27,32 +28,27 @@ public class DetailsStarActivity extends AppCompatActivity {
             }
         });
 
+        mDbHelper = new CelestialBodyDbhelper(this);
+
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
+        if (extras != null){
             String name = extras.getString("name");
-
-
             String mass = extras.getString("mass");
-            String temp = extras.getString("temp");
+            String size = extras.getString("size");
             String age = extras.getString("age");
-            String diameter = extras.getString("diameter");
-            String luminosity = extras.getString("luminosity");
 
-            TextView nameView = (TextView) findViewById(R.id.star_name);
-            TextView massView = (TextView) findViewById(R.id.star_mass);
-            TextView tempView = (TextView) findViewById(R.id.star_temperature);
-            TextView ageView = (TextView) findViewById(R.id.star_age);
-            TextView luminosityView = (TextView) findViewById(R.id.star_luminosity);
-            TextView diameterView = (TextView) findViewById(R.id.star_diameter);
-
+            TextView nameView = (TextView) findViewById(R.id.gal_name);
             nameView.setText(name);
-            massView.setText(mass + "");
-            tempView.setText(temp + "");
-            ageView.setText(age+"");
-            diameterView.setText(diameter+"");
-            luminosityView.setText(luminosity+"");
+
+            TextView massView = (TextView) findViewById(R.id.gal_mass);
+            massView.setText(mass);
+
+            TextView sizeView = (TextView) findViewById(R.id.gal_size);
+            sizeView.setText(size);
+
+            TextView ageView = (TextView) findViewById(R.id.gal_age);
+            ageView.setText(age);
+
         }
-
     }
-
 }

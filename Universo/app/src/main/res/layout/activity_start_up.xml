@@ -35,4 +35,17 @@
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/button_signout"
+        android:layout_width="213dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="80dp"
+        android:layout_weight="0.06"
+        android:background="@color/galaxy"
+        android:text="Sign Out"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
 </LinearLayout>

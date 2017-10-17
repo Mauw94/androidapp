@@ -28,6 +28,7 @@ public final class CelestialBodyContract {
 
         public final static String TABLE_NAME = "Stars";
 
+        public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_STAR_NAME = "name";
         public final static String COLUMN_IMAGE_ID = "imageid";
         public final static String COLUMN_STAR_TEMPERATURE = "temperature";
@@ -35,5 +36,17 @@ public final class CelestialBodyContract {
         public final static String COLUMN_STAR_LUMINOSITY = "luminosity";
         public final static String COLUMN_STAR_AGE = "age";
         public final static String COLUMN_STAR_MASS = "mass";
+    }
+
+    public static final class GalaxyEntry implements BaseColumns {
+
+        public final static String TABLE_NAME = "Galaxies";
+
+        public final static String _ID = BaseColumns._ID;
+        public final static String COLUMN_GAL_NAME = "name";
+        public final static String COLUMN_IMAGE_ID = "imageid";
+        public final static String COLUMN_GAL_SIZE = "size";
+        public final static String COLUMN_GAL_AGE = "age";
+        public final static String COLUMN_GAL_MASS = "mass";
     }
 }

@@ -54,9 +54,6 @@ public class DetailsPlanetActivity extends AppCompatActivity {
             distanceView.setText(distance+"");
             diameterView.setText(diameter+"");
             rotaSpeedView.setText(rotationspeed+"");
-
-            Log.v("DetailsPlanetActivity", "mass " + mass);
-            Log.v("DetailsPlanetActivity", "temp " + temp);
         }
 
     }
