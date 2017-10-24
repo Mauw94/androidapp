@@ -1,9 +1,13 @@
 package com.example.maurits.universo.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +46,7 @@ public class SignInActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        startAlarm();
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
 
@@ -59,6 +64,18 @@ public class SignInActivity extends AppCompatActivity implements
         // [END customize_button]
     }
 
+    public void startAlarm(){
+        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent intent;
+        PendingIntent pendingIntent;
+
+        long currentTime = System.currentTimeMillis();
+        long delay = 10 * 1000;
+
+        intent = new Intent(SignInActivity.this,AlarmNotificationReciever.class);
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+        manager.set(AlarmManager.RTC_WAKEUP, currentTime + delay,pendingIntent);
+    }
     @Override
     public void onStart() {
         super.onStart();
