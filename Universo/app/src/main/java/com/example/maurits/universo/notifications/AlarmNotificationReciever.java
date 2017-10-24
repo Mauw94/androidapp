@@ -1,4 +1,4 @@
-package com.example.maurits.universo.activity;
+package com.example.maurits.universo.notifications;
 
 import android.app.Notification;
 import android.content.BroadcastReceiver;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+
+import com.example.maurits.universo.notifications.NotificationHelper;
 
 import java.util.Random;
 
@@ -20,7 +22,7 @@ public class AlarmNotificationReciever extends BroadcastReceiver {
 
         NotificationHelper helper;
         helper = new NotificationHelper(context);
-        Notification.Builder builder = helper.getNotification();
+        Notification.Builder builder = helper.getNotification("Universo","Discover the universe with Universo");
         helper.getManager().notify(new Random().nextInt(),builder.build());
     }
 }

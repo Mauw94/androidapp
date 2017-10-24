@@ -1,4 +1,4 @@
-package com.example.maurits.universo.activity;
+package com.example.maurits.universo.notifications;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -12,14 +12,16 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.example.maurits.universo.R;
+import com.example.maurits.universo.activity.MainActivity;
+import com.example.maurits.universo.activity.StartUpActivity;
 
 /**
  * Created by niels on 24-Oct-17.
  */
 
 public class NotificationHelper extends ContextWrapper {
-    private static final String UNIVERSO_CHANNEL_ID = "com.example.niels.examplenot8.niels";
-    private static final String UNIVERSO_CHANNEL_NAME = "Niels Channel";
+    private static final String UNIVERSO_CHANNEL_ID = "com.example.universo";
+    private static final String UNIVERSO_CHANNEL_NAME = "universo Channel";
     private NotificationManager manager;
     @RequiresApi(api = Build.VERSION_CODES.O)
     public NotificationHelper(Context base) {
@@ -45,15 +47,15 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Notification.Builder getNotification() {
+    public Notification.Builder getNotification(String title, String text) {
         Notification.Builder builder = new Notification.Builder(getApplicationContext(), UNIVERSO_CHANNEL_ID);
-        builder.setContentTitle("Universo");
-        builder.setContentText("Discover the universe with universo");
+        builder.setContentTitle(title);
+        builder.setContentText(text);
         builder.setSmallIcon(R.drawable.universeicon);
         builder.setAutoCancel(true);
         //builder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
 
-        Intent resultIntent = new Intent(this, MainActivity.class);
+        Intent resultIntent = new Intent(this, StartUpActivity.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(this,0,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(resultPendingIntent);
         return builder;

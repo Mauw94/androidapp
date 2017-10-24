@@ -43,7 +43,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <receiver android:name=".activity.AlarmNotificationReciever" />
+        <receiver android:name=".notifications.AlarmNotificationReciever" />
     </application>
 
 </manifest>

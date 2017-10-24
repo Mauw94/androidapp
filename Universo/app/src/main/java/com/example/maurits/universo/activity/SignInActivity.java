@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.maurits.universo.model.UserSessionManager;
+import com.example.maurits.universo.notifications.AlarmNotificationReciever;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
@@ -70,7 +69,7 @@ public class SignInActivity extends AppCompatActivity implements
         PendingIntent pendingIntent;
 
         long currentTime = System.currentTimeMillis();
-        long delay = 10 * 1000;
+        long delay = 7 * 1000;
 
         intent = new Intent(SignInActivity.this,AlarmNotificationReciever.class);
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
