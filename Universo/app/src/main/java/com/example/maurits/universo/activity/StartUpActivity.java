@@ -28,7 +28,7 @@ public class StartUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
 
-        session =  new UserSessionManager(getApplicationContext());
+        session = new UserSessionManager(getApplicationContext());
 
         Button startButton = (Button) findViewById(R.id.button_start);
 
@@ -49,7 +49,7 @@ public class StartUpActivity extends AppCompatActivity {
                 startActivity(loginActivity);
             }
         });
-        ImageButton imageButton = (ImageButton)findViewById(R.id.tweetButton);
+        Button imageButton = (Button) findViewById(R.id.tweetButton);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,21 +59,21 @@ public class StartUpActivity extends AppCompatActivity {
                 tweetIntent.setType("text/plain");
 
                 PackageManager packManager = getPackageManager();
-                List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(tweetIntent,  PackageManager.MATCH_DEFAULT_ONLY);
+                List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
 
                 boolean resolved = false;
-                for(ResolveInfo resolveInfo: resolvedInfoList){
-                    if(resolveInfo.activityInfo.packageName.startsWith("com.twitter.android")){
+                for (ResolveInfo resolveInfo : resolvedInfoList) {
+                    if (resolveInfo.activityInfo.packageName.startsWith("com.twitter.android")) {
                         tweetIntent.setClassName(
                                 resolveInfo.activityInfo.packageName,
-                                resolveInfo.activityInfo.name );
+                                resolveInfo.activityInfo.name);
                         resolved = true;
                         break;
                     }
                 }
-                if(resolved){
+                if (resolved) {
                     startActivity(tweetIntent);
-                }else{
+                } else {
                     Intent intent = new Intent(StartUpActivity.this, TweetActivity.class);
                     startActivity(intent);
                 }
@@ -88,10 +88,10 @@ public class StartUpActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
     }
 
-    private void googleLogout(){
+    private void googleLogout() {
 
         Auth.GoogleSignInApi.signOut(session.mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override

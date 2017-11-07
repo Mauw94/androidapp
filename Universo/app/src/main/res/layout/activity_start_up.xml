@@ -49,10 +49,15 @@
         android:textSize="24sp"
         android:textStyle="bold|italic" />
 
-    <ImageButton
+    <Button
         android:id="@+id/tweetButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/tweet" />
+        android:layout_width="214dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="80dp"
+        android:background="@color/galaxy"
+        android:text="Tweet"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
 </LinearLayout>
