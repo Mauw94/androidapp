@@ -14,30 +14,25 @@ import com.example.maurits.universo.data.CelestialBodyDbhelper;
 public class DetailsGalaxyActivity extends AppCompatActivity {
 
     private CelestialBodyDbhelper mDbHelper;
+    private String name;
+    private String mass;
+    private String size;
+    private String age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_galaxy);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_body);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         mDbHelper = new CelestialBodyDbhelper(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-            String name = extras.getString("name");
+            name = extras.getString("name");
             Toast.makeText(getApplicationContext(), "Details of: " + name, Toast.LENGTH_SHORT).show();
-            String mass = extras.getString("mass");
-            String size = extras.getString("size");
-            String age = extras.getString("age");
+            mass = extras.getString("mass");
+            size = extras.getString("size");
+            age = extras.getString("age");
 
             TextView nameView = (TextView) findViewById(R.id.gal_name);
             nameView.setText(name);

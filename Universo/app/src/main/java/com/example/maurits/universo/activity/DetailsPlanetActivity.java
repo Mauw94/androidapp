@@ -11,6 +11,12 @@ import com.example.maurits.universo.data.CelestialBodyDbhelper;
 public class DetailsPlanetActivity extends AppCompatActivity {
 
     private CelestialBodyDbhelper mDbHelper;
+    private String name;
+    private String mass;
+    private String temp;
+    private String distance;
+    private String diameter;
+    private String rotationspeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +25,14 @@ public class DetailsPlanetActivity extends AppCompatActivity {
         // show all details of planet(x)
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            final String name = extras.getString("name");
+            name = extras.getString("name");
 
             Toast.makeText(getApplicationContext(), "Details of: " + name, Toast.LENGTH_SHORT).show();
-            String mass = extras.getString("mass");
-            String temp = extras.getString("temp");
-            String distance = extras.getString("distance");
-            String diameter = extras.getString("diameter");
-            String rotationspeed = extras.getString("rotationspeed");
+            mass = extras.getString("mass");
+            temp = extras.getString("temp");
+            distance = extras.getString("distance");
+            diameter = extras.getString("diameter");
+            rotationspeed = extras.getString("rotationspeed");
 
             TextView nameView = (TextView) findViewById(R.id.edit_name);
             TextView massView = (TextView) findViewById(R.id.edit_mass);

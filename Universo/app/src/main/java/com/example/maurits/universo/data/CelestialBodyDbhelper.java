@@ -13,7 +13,7 @@ public class CelestialBodyDbhelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "celestialbody.db";
 
-    private static final int DATABASE_VERSION = 33;
+    private static final int DATABASE_VERSION = 34;
 
     public CelestialBodyDbhelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

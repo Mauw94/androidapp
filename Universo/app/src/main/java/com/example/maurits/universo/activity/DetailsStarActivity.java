@@ -13,30 +13,28 @@ import com.example.maurits.universo.data.CelestialBodyDbhelper;
 
 public class DetailsStarActivity extends AppCompatActivity {
 
+    private String name;
+    private String mass;
+    private String temp;
+    private String age;
+    private String diameter;
+    private String luminosity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_star);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_body);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String name = extras.getString("name");
+            name = extras.getString("name");
 
             Toast.makeText(getApplicationContext(), "Details of: " + name, Toast.LENGTH_SHORT).show();
-            String mass = extras.getString("mass");
-            String temp = extras.getString("temp");
-            String age = extras.getString("age");
-            String diameter = extras.getString("diameter");
-            String luminosity = extras.getString("luminosity");
+            mass = extras.getString("mass");
+            temp = extras.getString("temp");
+            age = extras.getString("age");
+            diameter = extras.getString("diameter");
+            luminosity = extras.getString("luminosity");
 
             TextView nameView = (TextView) findViewById(R.id.star_name);
             TextView massView = (TextView) findViewById(R.id.star_mass);
