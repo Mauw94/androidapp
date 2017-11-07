@@ -1,11 +1,7 @@
 package com.example.maurits.universo.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,17 +41,6 @@ public class DetailsPlanetActivity extends AppCompatActivity {
             distanceView.setText(distance + "");
             diameterView.setText(diameter + "");
             rotaSpeedView.setText(rotationspeed + "");
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_body);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    Intent editIntent = new Intent(DetailsPlanetActivity.this, EditPlanetActivity.class);
-                    editIntent.putExtra("name", name);
-                    startActivity(editIntent);
-                }
-            });
         }
 
         mDbHelper = new CelestialBodyDbhelper(this);
