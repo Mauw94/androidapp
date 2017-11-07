@@ -38,11 +38,12 @@
         <activity
             android:name=".activity.DetailsGalaxyActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name=".notifications.AlarmNotificationReciever" />
 
-        <activity android:name=".activity.TweetActivity"></activity>
+        <activity android:name=".activity.TweetActivity" />
+        <activity android:name=".activity.LocatieActivity"></activity>
     </application>
 
 </manifest>

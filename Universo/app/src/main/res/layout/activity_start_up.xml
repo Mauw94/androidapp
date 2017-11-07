@@ -60,4 +60,15 @@
         android:textSize="24sp"
         android:textStyle="bold|italic" />
 
+    <Button
+        android:id="@+id/locatieButton"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="80dp"
+        android:background="@color/galaxy"
+        android:text="Check locatie"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
 </LinearLayout>

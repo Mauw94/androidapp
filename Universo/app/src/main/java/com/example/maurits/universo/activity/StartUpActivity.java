@@ -79,6 +79,16 @@ public class StartUpActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button locatieButton = (Button) findViewById(R.id.locatieButton);
+        locatieButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent locatieIntent = new Intent(StartUpActivity.this, LocatieActivity.class);
+                startActivity(locatieIntent);
+            }
+        });
+
     }
 
     @Override
