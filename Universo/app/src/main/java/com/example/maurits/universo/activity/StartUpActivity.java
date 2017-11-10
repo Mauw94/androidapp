@@ -99,8 +99,8 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-        **/
+        }**/
+
         getLocation();
 
     }
