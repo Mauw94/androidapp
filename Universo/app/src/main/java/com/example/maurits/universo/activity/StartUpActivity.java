@@ -91,19 +91,20 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
             }
         });
 
-        /**try {
-            getNighttime(50.9189,5.455);
+        try {
+            getNighttime(50.9189, 5.455);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }**/
 
-        getLocation();
+        }
+        //getLocation();
 
     }
+
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 1: {
@@ -121,6 +122,7 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
             // permissions this app might request
         }
     }
+
     public void getNighttime(double lat, double longt) throws ExecutionException, InterruptedException, JSONException {
         //Some url endpoint that you may have
         String latitude = String.valueOf(lat);
@@ -137,16 +139,16 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
         if (sunset != null) {
             sunsetview.setText("You can watch to the stars starting at " + sunset + " based on your current location.");
         } else {
-           sunsetview.setText("there was a problem determining when you can watch to the stars please try again later");
+            sunsetview.setText("there was a problem determining when you can watch to the stars please try again later");
         }
     }
+
     void getLocation() {
         try {
             LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
             //Location l = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-        catch(SecurityException e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
             TextView sunsetview = (TextView) findViewById(R.id.sunsetview);
             sunsetview.setText("Problem with getting your current location");
@@ -177,20 +179,20 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
     @Override
     public void onLocationChanged(Location location) {
         TextView sunsetview = (TextView) findViewById(R.id.sunsetview);
-         try {
-         double lat = location.getLatitude();
-         double lon = location.getLongitude();
-         getNighttime(lat,lon);
-         } catch (ExecutionException e) {
-         sunsetview.setText("Problem with getting your current location");
-         e.printStackTrace();
-         } catch (InterruptedException e) {
-         sunsetview.setText("Problem with getting your current location");
-         e.printStackTrace();
-         } catch (JSONException e) {
-             e.printStackTrace();
-             sunsetview.setText("Problem with getting your current location");
-         }
+        try {
+            double lat = location.getLatitude();
+            double lon = location.getLongitude();
+            getNighttime(lat, lon);
+        } catch (ExecutionException e) {
+            sunsetview.setText("Problem with getting your current location");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            sunsetview.setText("Problem with getting your current location");
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            sunsetview.setText("Problem with getting your current location");
+        }
     }
 
     @Override
