@@ -137,7 +137,7 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
         sunset = getRequest.execute(myUrl).get();
         TextView sunsetview = (TextView) findViewById(R.id.sunsetview);
         if (sunset != null) {
-            sunsetview.setText("You can watch to the stars starting at " + sunset + " based on your current location.");
+            sunsetview.setText("Stars will be visible at " + sunset);
         } else {
             sunsetview.setText("there was a problem determining when you can watch to the stars please try again later");
         }
