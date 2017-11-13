@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/tweetButton"
-        android:layout_width="214dp"
+        android:layout_width="213dp"
         android:layout_height="47dp"
         android:layout_marginLeft="80dp"
         android:background="@color/galaxy"
@@ -62,9 +62,11 @@
 
     <TextView
         android:id="@+id/sunsetview"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

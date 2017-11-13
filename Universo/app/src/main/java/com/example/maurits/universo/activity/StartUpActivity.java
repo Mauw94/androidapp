@@ -38,7 +38,7 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
-
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         session = new UserSessionManager(getApplicationContext());
 
         Button startButton = (Button) findViewById(R.id.button_start);
@@ -91,17 +91,17 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
             }
         });
 
-        try {
-            getNighttime(50.9189, 5.455);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-
-        }
-        //getLocation();
+//        try {
+//            getNighttime(50.9189, 5.455);
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//
+//        }
+        getLocation();
 
     }
 
@@ -184,14 +184,14 @@ public class StartUpActivity extends AppCompatActivity implements LocationListen
             double lon = location.getLongitude();
             getNighttime(lat, lon);
         } catch (ExecutionException e) {
-            sunsetview.setText("Problem with getting your current location");
+            sunsetview.setText("Problem location1");
             e.printStackTrace();
         } catch (InterruptedException e) {
-            sunsetview.setText("Problem with getting your current location");
+            sunsetview.setText("Problem location2");
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-            sunsetview.setText("Problem with getting your current location");
+            sunsetview.setText("Problem location3");
         }
     }
 
